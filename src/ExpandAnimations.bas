@@ -178,12 +178,15 @@ function fixateSlideNumber(doc as Object, slide as Object, slideNr as Integer, s
             'Call Tools.WritedbgInfo(shape)
             slide.IsPageNumberVisible = False
             slide.add(copy)
-            copy.setString(CStr(slideNr) & " / " & CStr(slideCount))
+            copy.setString(CStr(slideNr))
+           ' copy.setString(CStr(slideNr) & " / " & CStr(slideCount))
             copy.Style = shape.Style
             copy.Text.Style = shape.Text.Style
-            copy.Position = shape.Position
+            copy.Text.CharHeight = shape.Text.CharHeight
             copy.Size = shape.Size
+            copy.Position = shape.Position
             copy.TextVerticalAdjust = shape.TextVerticalAdjust
+			copy.TextHorizontalAdjust = com.sun.star.drawing.TextHorizontalAdjust.RIGHT
         end if
     next
 end function
